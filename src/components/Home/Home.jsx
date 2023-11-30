@@ -4,13 +4,13 @@ import { useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function Home(){
   
    // login validation
    const [email,setEmail] = useState("")
    const [password,setPassword]=useState("")
    const usenavigate=useNavigate()
+  
    const login = async (e) => {
     e.preventDefault();
 
@@ -32,7 +32,10 @@ function Home(){
         if (response.status === 200) {
           console.log("Authentication successful");
           toast.success("Login successful by "+ email)
-          usenavigate('/dashboard')
+          const facultyId =email
+          usenavigate(`/dashboard/${facultyId}`)
+         
+
           
           // Handle successful login
         } else if (response.status === 401) {

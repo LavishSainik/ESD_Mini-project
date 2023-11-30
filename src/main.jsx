@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import Layout from './Layout'
 import Home from './components/Home/Home'
+import Course from './components/course/Course'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import Dashboard from './components/Dashboard/dashboard'
-
+import TaList from './components/taList/TaList'
 const router = createBrowserRouter(
   [
     {
@@ -17,9 +18,18 @@ const router = createBrowserRouter(
           element: <Home />
         },
         {
-          path:"/dashboard",
+          path: "/dashboard/:facultyId",
           element:<Dashboard/>
+        },
+        {
+          path: "/course/:facultyId/:courseId", // Add this route for the Course component
+          element: <Course />
+        },
+        {
+          path: "/TaList/:facultyId/:courseId", // Add this route for the Course component
+          element: <TaList />
         }
+        
       ]
     }
   ]
